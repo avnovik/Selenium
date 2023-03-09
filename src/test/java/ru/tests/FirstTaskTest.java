@@ -5,12 +5,14 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
+import static java.lang.Thread.sleep;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class FirstTaskTest {
@@ -37,7 +39,7 @@ public class FirstTaskTest {
     }
 
     @Test
-    public void test() {
+    public void test() throws InterruptedException {
         String login = "Taraskina Valeriya";
         String password = "testing";
         //Пройти авторизацию
@@ -49,15 +51,23 @@ public class FirstTaskTest {
                 .sendKeys(password);
         driver.findElement(By.xpath("//button[@type='submit']")).submit();
 
-        String title = "Панель быстрого запуска";
+        String titleText = "Панель быстрого запуска";
 //        Проверить наличие на странице заголовка Панель быстрого запуска
-        wait.until(ExpectedConditions.visibilityOf(
-                driver.findElement(By.xpath("//h1[@class ='oro-subtitle']"))));
         var titleElement = driver.findElement(By.xpath("//h1[@class ='oro-subtitle']"));
-        assertEquals(title, titleElement.getText(), "Текст отличается от ожидаемого");
 
-
+        wait.until(ExpectedConditions.visibilityOf(titleElement));
+        assertEquals(titleText, titleElement.getText(), "Текст отличается от ожидаемого");
 //        В выплывающем окне раздела Расходы нажать на Командировки
+        WebElement costsList = driver.findElement(By.xpath("//ul[contains(@class, 'main-menu')]/li/a//span[text()='Расходы']"));
+        costsList.click();
+        wait.until(ExpectedConditions.visibilityOf(
+                costsList.findElement(By.xpath("./ancestor::li//ul[@class='dropdown-menu menu_level_1']"))));
+        driver.findElement(By.xpath("//li[@data-route='crm_business_trip_index']")).click();
+
+        wait.until(ExpectedConditions.invisibilityOf(driver.findElement(By.xpath("//div[@class='loader-mask shown']"))));
+
+
+        sleep(2000);
 //        Нажать на  Создать командировку
 //        Проверить наличие на странице заголовка "Создать командировку"
 //        На странице создания командировки заполнить или выбрать поля:
