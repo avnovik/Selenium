@@ -1,11 +1,13 @@
 package ru.tests.exercise2.steps;
 
+import io.qameta.allure.Step;
 import ru.tests.exercise2.pages.BusinessTripPage;
 import ru.tests.exercise2.pages.CreateBusinessTripPage;
 import ru.tests.exercise2.pages.NavCalendar;
 
 public class CreateBusinessTripSteps {
 
+    @Step("Нажимаем на 'Создать командировку' и проверяем наличие на странице заголовка 'Создать командировку'")
     public void createBusinessTrip() {
         BusinessTripPage businessTripPage = new BusinessTripPage();
 
@@ -13,6 +15,7 @@ public class CreateBusinessTripSteps {
         businessTripPage.checkTitle();
     }
 
+    @Step("На странице создания командировки заполняем поля")
     public void fillTheFieldsExceptEmployeesSection(String departureCity, String arrivalCity, int year, String month, int day) {
         CreateBusinessTripPage createBusinessTripPage = new CreateBusinessTripPage();
         NavCalendar navCalendar = new NavCalendar();
@@ -33,12 +36,14 @@ public class CreateBusinessTripSteps {
         navCalendar.chooseDay(day);
     }
 
+    @Step("Нажимаем 'Сохранить и закрыть'")
     public void clickSaveAndClose() {
         CreateBusinessTripPage createBusinessTripPage = new CreateBusinessTripPage();
 
         createBusinessTripPage.clickSaveAndClose();
     }
 
+    @Step("Проверяем отсутствие ошибок")
     public void checkNoError() {
         CreateBusinessTripPage createBusinessTripPage = new CreateBusinessTripPage();
 
@@ -46,6 +51,7 @@ public class CreateBusinessTripSteps {
         createBusinessTripPage.checkDurationTrip();
     }
 
+    @Step("Проверяем на странице сообщение: 'Список командируемых сотрудников не может быть пустым'")
     public void checkError() {
         CreateBusinessTripPage createBusinessTripPage = new CreateBusinessTripPage();
 

@@ -1,7 +1,10 @@
 package ru.tests.exercise2;
 
+import io.qameta.allure.*;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import ru.tests.exercise2.extension.AllureExtension;
 import ru.tests.exercise2.extension.DriverExtension;
 import ru.tests.exercise2.managers.TestProperties;
 import ru.tests.exercise2.pages.BasePage;
@@ -11,7 +14,8 @@ import ru.tests.exercise2.steps.NavMenuSteps;
 
 import java.util.Properties;
 
-@ExtendWith(DriverExtension.class)
+@DisplayName("Сценарий для Allure репорта")
+@ExtendWith({DriverExtension.class, AllureExtension.class})
 class SecondTaskTest extends BasePage {
 
     private final Properties properties = TestProperties.getInstance().getProperties();
@@ -20,8 +24,11 @@ class SecondTaskTest extends BasePage {
     private final CreateBusinessTripSteps businessTripPage = new CreateBusinessTripSteps();
 
     @Test
+    @Severity(SeverityLevel.NORMAL)
+    @Description("Проверка функционала создания командировки, не заполнен раздел 'Командированные сотрудники'")
+    @TmsLink("test#43qg-7")
+    @Link("http://training.appline.ru/user/login")
     void secondAT() {
-
         //Пройти авторизацию
         //Проверить наличие на странице заголовка Панель быстрого запуска
         loginSteps.login(properties.getProperty("LOGIN"), properties.getProperty("PASSWORD"));

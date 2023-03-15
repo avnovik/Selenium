@@ -1,5 +1,6 @@
 package ru.tests.exercise2.steps;
 
+import io.qameta.allure.Step;
 import ru.tests.exercise2.pages.LoginPage;
 
 public class LoginSteps {

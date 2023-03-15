@@ -1,5 +1,6 @@
 package ru.tests.exercise2.pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -24,12 +25,14 @@ public class LoginPage extends BasePage {
     private WebElement subTitle;
     String subTitleText = "Панель быстрого запуска";
 
+    @Step("Страница авторизации: вводим логин и пароль")
     public void inputLoginAndPassword(String login, String password) {
         wait.until(ExpectedConditions.visibilityOf(loginForm));
         inputLogin.sendKeys(login);
         inputPassword.sendKeys(password);
     }
 
+    @Step("Нажимаем кнопку логина и проверяем наличие на странице заголовка 'Панель быстрого запуска'")
     public void submitLoginFormAndCheckTitle() {
         submitButton.submit();
         wait.until(ExpectedConditions.visibilityOf(subTitle));
