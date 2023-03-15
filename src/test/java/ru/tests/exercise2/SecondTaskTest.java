@@ -3,59 +3,48 @@ package ru.tests.exercise2;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import ru.tests.exercise2.extension.DriverExtension;
-import ru.tests.exercise2.pages.*;
+import ru.tests.exercise2.managers.TestProperties;
+import ru.tests.exercise2.pages.BasePage;
+import ru.tests.exercise2.steps.CreateBusinessTripSteps;
+import ru.tests.exercise2.steps.LoginSteps;
+import ru.tests.exercise2.steps.NavMenuSteps;
+
+import java.util.Properties;
 
 @ExtendWith(DriverExtension.class)
 class SecondTaskTest extends BasePage {
 
+    private final Properties properties = TestProperties.getInstance().getProperties();
+    private final LoginSteps loginSteps = new LoginSteps();
+    private final NavMenuSteps navMenu = new NavMenuSteps();
+    private final CreateBusinessTripSteps businessTripPage = new CreateBusinessTripSteps();
+
     @Test
     void secondAT() {
 
-        LoginPage loginPage = new LoginPage();
-        NavMenu navMenu = new NavMenu();
-        BusinessTripPage businessTripPage = new BusinessTripPage();
-        CreateBusinessTripPage createBusinessTripPage = new CreateBusinessTripPage();
-        NavCalendar navCalendar = new NavCalendar();
-
         //Пройти авторизацию
         //Проверить наличие на странице заголовка Панель быстрого запуска
-        loginPage.inputLoginAndPassword();
-        loginPage.submitLoginFormAndCheckTitle();
+        loginSteps.login(properties.getProperty("LOGIN"), properties.getProperty("PASSWORD"));
         //В выплывающем окне раздела Расходы нажать на Командировки
-        navMenu.findCostList();
-        navMenu.clickBusinessTrip();
-        waitingForLoading();
+        navMenu.clickOnBusinessTrips();
         //Нажать на  Создать командировку
-        businessTripPage.createBusinessTrip();
-        waitingForLoading();
         //Проверить наличие на странице заголовка "Создать командировку"
-        createBusinessTripPage.checkTitle();
+        businessTripPage.createBusinessTrip();
         //На странице создания командировки заполнить или выбрать поля:
         //— Подразделение - выбрать Отдел внутренней разработки
-        createBusinessTripPage.chooseUnit();
         //— Принимающая организация  - нажать "Открыть список" и в поле "Укажите организацию" выбрать любое значение
-        createBusinessTripPage.chooseHostOrganization();
         //— В задачах поставить чекбокс на "Заказ билетов"
-        createBusinessTripPage.chooseCheckbox();
         //— Указать города выбытия и прибытия
-        createBusinessTripPage.chooseDepartureAndArrivalCity("Ярославль", "Омск");
         //—Указать даты выезда и возвращения
-        createBusinessTripPage.chooseDepartureDate();
-        navCalendar.loading();
-        navCalendar.chooseToday();
-        createBusinessTripPage.chooseReturnDate();
-        navCalendar.loading();
-        navCalendar.chooseMonth("июнь");
-        navCalendar.chooseYear(2024);
-        navCalendar.chooseDay(15);
         //—  !! Раздел Командированные сотрудники не заполнять
         //Проверить, что все поля заполнены правильно
-        createBusinessTripPage.checkNoError();
-        createBusinessTripPage.checkDurationTrip();
+        businessTripPage.fillTheFieldsExceptEmployeesSection(
+                "Ярославль", "Омск",
+                2024, "июнь", 13);
+        businessTripPage.checkNoError();
         //Нажать "Сохранить и закрыть"
-        createBusinessTripPage.clickSaveAndClose();
-        waitingForLoading();
+        businessTripPage.clickSaveAndClose();
         //Проверить, что на странице появилось сообщение: "Список командируемых сотрудников не может быть пустым"
-        createBusinessTripPage.checkError();
+        businessTripPage.checkError();
     }
 }

@@ -7,9 +7,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class CreateBusinessTripPage extends BasePage {
-    @FindBy(xpath = "//h1[@class='user-name']")
-    private WebElement subTitleWebElement;
-    String subTitleText = "Создать командировку";
 
     @FindBy(xpath = "//select[@data-name='field__business-unit']")
     private WebElement fieldUnit;
@@ -50,9 +47,6 @@ public class CreateBusinessTripPage extends BasePage {
     @FindBy(xpath = "//div[@class='pull-right']//button[not(contains(@class, 'main-group'))]")
     private WebElement saveAndCloseBtn;
 
-    public void checkTitle() {
-        assertEquals(subTitleText, subTitleWebElement.getText(), "Заголовок должен содержать текст 'Создать командировку'");
-    }
 
     public void chooseUnit() {
         fieldUnit.click();
@@ -95,6 +89,7 @@ public class CreateBusinessTripPage extends BasePage {
 
     public void clickSaveAndClose() {
         saveAndCloseBtn.click();
+        waitingForLoading();
     }
 
     public void checkError() {

@@ -3,15 +3,10 @@ package ru.tests.exercise2.pages;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import ru.tests.exercise2.managers.TestProperties;
-
-import java.util.Properties;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class LoginPage extends BasePage {
-
-    private final Properties properties = TestProperties.getInstance().getProperties();
 
     @FindBy(xpath = "//form[@id='login-form']")
     private WebElement loginForm;
@@ -29,10 +24,10 @@ public class LoginPage extends BasePage {
     private WebElement subTitle;
     String subTitleText = "Панель быстрого запуска";
 
-    public void inputLoginAndPassword() {
+    public void inputLoginAndPassword(String login, String password) {
         wait.until(ExpectedConditions.visibilityOf(loginForm));
-        inputLogin.sendKeys(properties.getProperty("LOGIN"));
-        inputPassword.sendKeys(properties.getProperty("PASSWORD"));
+        inputLogin.sendKeys(login);
+        inputPassword.sendKeys(password);
     }
 
     public void submitLoginFormAndCheckTitle() {

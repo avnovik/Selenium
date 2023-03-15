@@ -4,10 +4,10 @@ import ru.tests.exercise2.pages.LoginPage;
 
 public class LoginSteps {
 
-    public void login(){
+    public void login(String login, String password){
         LoginPage loginPage = new LoginPage();
 
-        loginPage.inputLoginAndPassword();
+        loginPage.inputLoginAndPassword(login, password);
         loginPage.submitLoginFormAndCheckTitle();
     }
 }
