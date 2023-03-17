@@ -1,4 +1,4 @@
-package ru.tests.exercise2.managers;
+package ru.tests.exercise4.managers;
 
 import java.io.FileInputStream;
 import java.io.IOException;

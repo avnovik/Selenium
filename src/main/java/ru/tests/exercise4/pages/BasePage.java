@@ -1,11 +1,11 @@
-package ru.tests.exercise2.pages;
+package ru.tests.exercise4.pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import ru.tests.exercise2.managers.DriverManager;
+import ru.tests.exercise4.managers.DriverManager;
 
 import java.time.Duration;
 

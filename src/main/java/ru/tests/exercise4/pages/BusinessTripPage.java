@@ -1,7 +1,8 @@
-package ru.tests.exercise2.pages;
+package ru.tests.exercise4.pages;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -14,6 +15,7 @@ public class BusinessTripPage extends BasePage {
     String subTitleText = "Создать командировку";
 
     public void createBusinessTrip() {
+        wait.until(ExpectedConditions.visibilityOf(createBtn));
         createBtn.click();
         waitingForLoading();
     }

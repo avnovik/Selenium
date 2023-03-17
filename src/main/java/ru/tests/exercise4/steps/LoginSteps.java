@@ -1,9 +1,11 @@
-package ru.tests.exercise2.steps;
+package ru.tests.exercise4.steps;
 
-import ru.tests.exercise2.pages.LoginPage;
+import io.cucumber.java.en.And;
+import ru.tests.exercise4.pages.LoginPage;
 
 public class LoginSteps {
 
+    @And("^Страница авторизации: вводим логин \"([^\"]*)\" и пароль \"([^\"]*)\"$")
     public void login(String login, String password){
         LoginPage loginPage = new LoginPage();
 

@@ -1,4 +1,4 @@
-package ru.tests.exercise2.managers;
+package ru.tests.exercise4.managers;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
