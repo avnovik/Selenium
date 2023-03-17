@@ -24,7 +24,7 @@ Junit, Allure фреймворком BDD
   (задания обязательны к выполнению для получения зачета)
 - Итоговая практика по всем темам курса, которые обязательны к выполнению для получения зачета по курсу
 
-============================
+---
 #### [Задание №1_Первый автотест](https://github.com/avnovik/Selenium/blob/main/src/test/java/ru/tests/exercise1/FirstTaskTest.java)
 Написать автотест по заданному сценарию:
 1. Перейти на страницу http://training.appline.ru/user/login Пройти авторизацию
@@ -43,7 +43,7 @@ Junit, Allure фреймворком BDD
 8. Нажать "Сохранить и закрыть"
 9. Проверить, что на странице появилось сообщение: "Список командируемых сотрудников не может быть пустым"
 
-============================
+---
 #### [Задание №2_Page Object](https://github.com/avnovik/Selenium/blob/second/src/test/java/ru/tests/exercise2/SecondTaskTest.java)
 Доработать сценарий из задания № 1:
 1. Переписать тест с использованием PageObject и PageFactory
@@ -53,11 +53,11 @@ Junit, Allure фреймворком BDD
    - Настроить запуск тестов с использованием maven
    - Выделить класс BaseTest, методы которого могут быть переиспользованы в дргуих тестах
 
-============================
+---
 #### [Задание №3_Allure](https://github.com/avnovik/Selenium/blob/third/src/test/java/ru/tests/exercise2/SecondTaskTest.java)
 К автотесту, разработанному в предыдущих заданиях добавить возможность формирования Allure отчета
 
-============================
+---
 #### [Задание №4_Cucumber](https://github.com/avnovik/Selenium/blob/fourth/src/test/java/ru/tests/exercise4/feature/cucumberScenario.feature)
 Доработать автотест из предыдущих заданий с использованием библиотеки Cucumber
 
