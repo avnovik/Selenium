@@ -61,4 +61,7 @@ Junit, Allure фреймворком BDD
 #### [Задание №4_Cucumber](https://github.com/avnovik/Selenium/blob/fourth/src/test/java/ru/tests/exercise4/feature/cucumberScenario.feature)
 Доработать автотест из предыдущих заданий с использованием библиотеки Cucumber
 
-============================
+---
+#### [Задание №5_Итоговая работа](https://github.com/avnovik/Selenium_Final_Practical_Task)
+Итоговая практика по всем темам курса.
+С помощью Java + Selenium + Сucumber + Allure + Maven автоматизировать два тестовых сценария.
